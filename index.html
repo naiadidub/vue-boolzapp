@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>whatsapp-web</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header></header>
+    <div id="main-container">
+        <!--screen container-->
+        <div id="screen-container" class="container ">
+            <div class="row h-100 ">
+                <!--sezione elenco delle chat-->
+                <div class="col-4 px-0 chat-list debug">
+                    <!--header elenco delle chat con immagine profilo e pulsanti-->
+                    <div class="chat-header d-flex justify-content-start align-items-center">
+                        <img src="./img/avatar_7.jpg" alt="" class="user-icons ms-2">
+                        <span class="fw-bolder ms-2">Tonno</span>
+                        <div class="chat-header d-flex justify-content-end          align-items-center gap-3 me-3">
+                            <i class="fa-solid fa-circle-notch"></i>
+                            <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+                    <!--sezione per attivare notifiche-->
+                    <div id="notifiche" class="d-flex align-items-center">
+                        <div class="d-flex align-items-center ms-4" style="background-color: white; padding: 15px; border-radius: 50%;">
+                            <i class="fa-solid fa-bell-slash" style="color: #53BDEB; font-size: 20px;"></i>
+                        </div>
+                        <div class="ms-3">
+                            <p class="mb-0">Ricevi notifiche di nuovi messaggi</p>
+                            <p class="mb-0" style="color: grey; text-decoration: underline;">Attiva le notifiche</p>
+                        </div>
+                    </div>
+                    <!--sezione con input per filtrare sulle chat-->
+                    <div id="cerca-messaggi" class="d-flex p-1 align-items-center">
+                        <div class="ms-4">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <input type="text" placeholder="cerca o inizia una nuova chat" class="w-100">
+                    </div>
+                    <!--lista chat-->
+                    <div id="chat-list-item" class="d-flex align-items-center p-2 .gey">
+                        <img src="./img/avatar_1.jpg" alt="" class="user-icons">
+                        <div class="ms-3">
+                            <p class="mb-0 fw-bolder">Tonna</p>
+                            <p class="mb-0" style="color: grey;">ultimo messaggio inviato</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8 px-0 chat-section debug">
+                    <div class="chat-header d-flex align-items-center">
+                        <img src="./img/avatar_1.jpg" alt="" class="user-icons ms-2">
+                        <div class="ms-3">
+                            <p class="mb-0 fw-bolder">Tonnara</p>
+                            <p class="mb-0" style="color: grey;">ultimo ultimo accesso oggi alle:</p>
+                        </div>
+                        <div style="width: 60%;" class="d-flex justify-content-end align-items-center gap-3 me-3">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <i class="fa-solid fa-paperclip"></i>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </div>
+                    </div>
+                    <div id="chat-conversation">
+                        div#
+                    </div>
+                    <div id="text-message" class="d-flex align-items-center">
+                        <input type="text">
+                        <button>invia</button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
