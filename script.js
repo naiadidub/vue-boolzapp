@@ -171,8 +171,8 @@ const contact = new Vue({
         avatar: '',
         ultimoAccesso:'',
         messaggi: [],
-    }
-    
+    },
+    messaggioscritto: ''
 },
     methods: {
         viewChat(contact){
@@ -183,7 +183,16 @@ const contact = new Vue({
             console.log(this.view.messaggi)
         },
         sendMessage(){
-            
+            for (let i = 0; i < this.contacts.length; i++){
+                if (this.contacts[i].name === this.view.name){
+                    this.contacts[i].messages.push({
+                        date: dayjs().format('DD/MM/YYYY HH:m'),
+                        message: this.messaggioscritto,
+                        status: 'sent'
+                    })
+                }
+            }
+            console.log(this.view.messaggi)
         }
     }
     
