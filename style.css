@@ -3,6 +3,11 @@
     padding: 0;
     box-sizing: border-box;
 }
+.clearfix:after{
+    content: '';
+    display:table;
+    clear: both;
+}
 #main-container{
     width: 100vw;
     height: calc(100vh - 100px);
@@ -54,14 +59,22 @@ header{
     height: 40px;
     background-color: white;
 }
-#sent-message, #answer{
-    width: 50%;
+#sent-message{
+    width: 100%;
     height: 100%;
 }
 .message-style{
-    width: auto;
+    width: 100%;
     height: auto;
     padding: 3px;
-    background-color: white;
     border-radius: 10px;
+}
+.green{
+    background-color: #D9FDD3;
+    display: flex;
+    justify-content: end;
+    text-align: end;
+}
+.white{
+    background-color: #FFFFFF;
 }

@@ -8,12 +8,14 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
 </head>
 <body>
     <header></header>
     <div id="main-container">
         <!--screen container-->
-        <div id="screen-container" class="container ">
+        <div id="app" class="container ">
             <div class="row h-100 ">
                 <!--sezione elenco delle chat-->
                 <div class="col-4 px-0 chat-list debug">
@@ -45,20 +47,21 @@
                         <input type="text" placeholder="cerca o inizia una nuova chat" class="w-100">
                     </div>
                     <!--lista chat-->
-                    <div id="chat-list-item" class="d-flex align-items-center p-2 .gey">
-                        <img src="./img/avatar_1.jpg" alt="" class="user-icons">
+                    <div id="chat-list-item" class="d-flex align-items-center p-2 .gey" v-for="(contact, index) in contacts" @click="viewChat(contact)">
+                        <img :src="`./img/avatar${contact.avatar}.jpg`" alt="" class="user-icons">
                         <div class="ms-3">
-                            <p class="mb-0 fw-bolder">Tonna</p>
-                            <p class="mb-0" style="color: grey;">ultimo messaggio inviato</p>
+                            <p class="mb-0 fw-bolder">{{contact.name}}</p>
+                            <p class="mb-0" style="color: grey;">{{contact.messages[contact.messages.length - 1].message}}</p>
                         </div>
                     </div>
                 </div>
+                <!--chat conversation-->
                 <div class="col-8 px-0 chat-section debug">
                     <div class="chat-header d-flex align-items-center">
-                        <img src="./img/avatar_1.jpg" alt="" class="user-icons ms-2">
+                        <img :src="`./img/avatar${view.avatar}.jpg`" alt="" class="user-icons ms-2">
                         <div class="ms-3">
-                            <p class="mb-0 fw-bolder">Tonnara</p>
-                            <p class="mb-0" style="color: grey;">ultimo ultimo accesso oggi alle:</p>
+                            <p class="mb-0 fw-bolder">{{view.name}}</p>
+                            <p class="mb-0" style="color: grey;">ultimo ultimo accesso:{{view.ultimoAccesso}}</p>
                         </div>
                         <div style="width: 60%;" class="d-flex justify-content-end align-items-center gap-3 me-3">
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -66,12 +69,15 @@
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
                     </div>
-                    <div id="chat-conversation">
-                        div#
+                    <div id="chat-conversation" class="d-flex">
+                        <div id="sent-message" class="debug">
+                            <div :class="{ green: messaggio.status === 'sent' , white: messaggio.status === 'received'}" class="message-style" v-for="(messaggio) in view.messaggi">{{messaggio.message}}</div>
+                        </div>
                     </div>
+                <!--input user per scrivere messaggio-->
                     <div id="text-message" class="d-flex align-items-center">
-                        <input type="text">
-                        <button>invia</button>
+                        <input  type="text">
+                        <button @click="sendMessage">invia</button>
                     </div>
                     
                 </div>
