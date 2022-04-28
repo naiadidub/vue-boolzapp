@@ -204,7 +204,6 @@ const contact = new Vue({
             
         }
     }, 
-
     computed: {
         filtered() {    
             return this.contacts.filter(contact => { return contact.name.toLowerCase().includes(this.filtroUtente)   

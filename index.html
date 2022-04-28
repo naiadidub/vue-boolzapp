@@ -69,7 +69,7 @@
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
                     </div>
-                    <div id="chat-conversation">
+                    <div id="chat-conversation" class="d-flex">
                         <div id="sent-message" style="border-bottom: 1px solid grey;">
                             <div  :class="{ green: messaggio.status === 'sent' , white: messaggio.status === 'received'}" class="message-style" v-for="(messaggio) in view.messaggi">{{messaggio.message}}</div>
                         </div>
