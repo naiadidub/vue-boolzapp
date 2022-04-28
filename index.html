@@ -44,18 +44,18 @@
                         <div class="ms-4">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </div>
-                        <input type="text" placeholder="cerca o inizia una nuova chat" class="w-100">
+                        <input v-model="filtroUtente" type="text" placeholder="cerca chat per nome" class="w-100">
                     </div>
                     <!--lista chat-->
-                    <div id="chat-list-item" class="d-flex align-items-center p-2 .gey" v-for="(contact, index) in contacts" @click="viewChat(contact)">
-                        <img :src="`./img/avatar${contact.avatar}.jpg`" alt="" class="user-icons">
+                    <div id="chat-list-item" class="d-flex align-items-center p-2 .gey" v-for="contact in filtered" @click="viewChat(contact)">
+                        <img  :src="`./img/avatar${contact.avatar}.jpg`" alt="" class="user-icons">
                         <div class="ms-3">
                             <p class="mb-0 fw-bolder">{{contact.name}}</p>
                             <p class="mb-0" style="color: grey;">{{contact.messages[contact.messages.length - 1].message}}</p>
                         </div>
                     </div>
                 </div>
-                <!--chat conversation-->
+                <!--sezione conversazione tra utente e contatto scelto -->
                 <div class="col-8 px-0 chat-section debug">
                     <div class="chat-header d-flex align-items-center">
                         <img :src="`./img/avatar${view.avatar}.jpg`" alt="" class="user-icons ms-2">
@@ -69,15 +69,16 @@
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </div>
                     </div>
-                    <div id="chat-conversation" class="d-flex">
-                        <div id="sent-message" class="debug">
-                            <div :class="{ green: messaggio.status === 'sent' , white: messaggio.status === 'received'}" class="message-style" v-for="(messaggio) in view.messaggi">{{messaggio.message}}</div>
+                    <div id="chat-conversation">
+                        <div id="sent-message" style="border-bottom: 1px solid grey;">
+                            <div  :class="{ green: messaggio.status === 'sent' , white: messaggio.status === 'received'}" class="message-style" v-for="(messaggio) in view.messaggi">{{messaggio.message}}</div>
                         </div>
                     </div>
                 <!--input user per scrivere messaggio-->
-                    <div id="text-message" class="d-flex align-items-center">
-                        <input v-model="messaggioscritto" type="text">
-                        <button @click="sendMessage">invia</button>
+                    <div id="text-message" class="d-flex align-items-center justify-content-center">
+                        <i class="fa-regular fa-face-smile me-5"></i>
+                        <input v-on:keyup.enter="sendMessage" v-model="messaggioscritto" type="text" style="width: 70%;" id="input-style">
+                        <i class="fa-solid fa-microphone ms-5"></i>
                     </div>
                     
                 </div>

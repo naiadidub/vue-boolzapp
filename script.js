@@ -172,8 +172,9 @@ const contact = new Vue({
         ultimoAccesso:'',
         messaggi: [],
     },
-    messaggioscritto: ''
-},
+    messaggioscritto: '',
+    filtroUtente: ''
+    },
     methods: {
         viewChat(contact){
             this.view.name = contact.name
@@ -189,14 +190,32 @@ const contact = new Vue({
                         date: dayjs().format('DD/MM/YYYY HH:m'),
                         message: this.messaggioscritto,
                         status: 'sent'
+                        
                     })
+                    this.messaggioscritto = ''
+                    setTimeout(()=>{this.contacts[i].messages.push({
+                        date: dayjs().format('DD/MM/YYYY HH:m'),
+                        message: 'ok',
+                        status: 'received'
+                    })}, 1000)
                 }
             }
             console.log(this.view.messaggi)
+            
         }
-    }
-    
-})
+    }, 
 
+    computed: {
+        filtered() {    
+            return this.contacts.filter(contact => { return contact.name.toLowerCase().includes(this.filtroUtente)   
+            })
+        }
+    },
+    mounted(){
+        this.view.name = this.contacts[0].name
+        this.view.avatar = this.contacts[0].avatar
+        this.view.messaggi = this.contacts[0].messages
+    }
+})
 
 
